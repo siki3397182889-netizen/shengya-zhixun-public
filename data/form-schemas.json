@@ -1,0 +1,37 @@
+{
+  "version": "2026-07-12.1",
+  "sourceScope": "脱敏后的2026-07-12巡检导出结构统计",
+  "forms": [
+    {"formNo":"D8","name":"中控室巡检表","expectedColumns":33,"inspectionFields":13,"descriptionSlots":4,"numericFields":8},
+    {"formNo":"D10","name":"SVG舱及避雷器巡检表","expectedColumns":77,"inspectionFields":57,"descriptionSlots":4,"numericFields":45,"coreRules":true},
+    {"formNo":"D11","name":"35kV站用变巡检表","expectedColumns":24,"inspectionFields":6,"descriptionSlots":2,"numericFields":2},
+    {"formNo":"D12","name":"GIS舱及220kV出线巡检表","expectedColumns":78,"inspectionFields":46,"descriptionSlots":16,"numericFields":27,"coreRules":true},
+    {"formNo":"D13","name":"主变压器巡检表","expectedColumns":67,"inspectionFields":40,"descriptionSlots":11,"numericFields":31,"coreRules":true},
+    {"formNo":"D14","name":"消防控制室巡检表","expectedColumns":21,"inspectionFields":3,"descriptionSlots":2,"numericFields":0},
+    {"formNo":"D15","name":"水泵房及消防泵房巡检表","expectedColumns":25,"inspectionFields":6,"descriptionSlots":3,"numericFields":2},
+    {"formNo":"D16","name":"35kV接地变中性点电阻柜巡检表","expectedColumns":28,"inspectionFields":8,"descriptionSlots":4,"numericFields":4},
+    {"formNo":"D19","name":"35kV一号配电舱巡检表","expectedColumns":29,"inspectionFields":7,"descriptionSlots":6,"numericFields":0},
+    {"formNo":"D20","name":"400V配电舱巡检表","expectedColumns":39,"inspectionFields":14,"descriptionSlots":9,"numericFields":4},
+    {"formNo":"D21","name":"35kV二号配电舱巡检表","expectedColumns":29,"inspectionFields":7,"descriptionSlots":6,"numericFields":0},
+    {"formNo":"D22","name":"二号继保舱巡检表","expectedColumns":55,"inspectionFields":31,"descriptionSlots":8,"numericFields":18},
+    {"formNo":"D23","name":"一号继保舱巡检表","expectedColumns":37,"inspectionFields":15,"descriptionSlots":6,"numericFields":9},
+    {"formNo":"D24","name":"三号继保舱巡检表","expectedColumns":31,"inspectionFields":11,"descriptionSlots":4,"numericFields":7},
+    {"formNo":"D25","name":"四号继保舱巡检表","expectedColumns":19,"inspectionFields":2,"descriptionSlots":1,"numericFields":0},
+    {"formNo":"D26","name":"48V及220V蓄电池舱巡检表","expectedColumns":52,"inspectionFields":24,"descriptionSlots":12,"numericFields":8,"coreRules":true},
+    {"formNo":"D85","name":"调相机一号蓄电池舱巡检表","expectedColumns":25,"inspectionFields":5,"descriptionSlots":4,"numericFields":1},
+    {"formNo":"D86","name":"调相机二号蓄电池舱巡检表","expectedColumns":25,"inspectionFields":5,"descriptionSlots":4,"numericFields":1},
+    {"formNo":"D87","name":"调相机一号SFC舱巡检表","expectedColumns":43,"inspectionFields":17,"descriptionSlots":10,"numericFields":0},
+    {"formNo":"D88","name":"调相机二号SFC舱巡检表","expectedColumns":41,"inspectionFields":16,"descriptionSlots":9,"numericFields":0},
+    {"formNo":"D89","name":"调相机一号主机舱巡检表","expectedColumns":92,"inspectionFields":45,"descriptionSlots":31,"numericFields":16},
+    {"formNo":"D99","name":"调相机二号主机舱巡检表","expectedColumns":92,"inspectionFields":46,"descriptionSlots":31,"numericFields":16},
+    {"formNo":"D100","name":"调相机一号励磁舱巡检表","expectedColumns":79,"inspectionFields":41,"descriptionSlots":22,"numericFields":14},
+    {"formNo":"D101","name":"调相机二号励磁舱巡检表","expectedColumns":81,"inspectionFields":42,"descriptionSlots":23,"numericFields":15},
+    {"formNo":"D102","name":"调相机继保舱巡检表","expectedColumns":117,"inspectionFields":61,"descriptionSlots":41,"numericFields":35},
+    {"formNo":"D103","name":"调相机一号DCS舱巡检表","expectedColumns":97,"inspectionFields":58,"descriptionSlots":24,"numericFields":44},
+    {"formNo":"D105","name":"调相机二号DCS舱巡检表","expectedColumns":97,"inspectionFields":58,"descriptionSlots":24,"numericFields":44},
+    {"formNo":"D108","name":"调相机一号升压变巡检表","expectedColumns":34,"inspectionFields":12,"descriptionSlots":7,"numericFields":1},
+    {"formNo":"D109","name":"调相机二号升压变巡检表","expectedColumns":34,"inspectionFields":12,"descriptionSlots":7,"numericFields":1},
+    {"formNo":"D120","name":"调相机400V配电舱巡检表","expectedColumns":53,"inspectionFields":33,"descriptionSlots":5,"numericFields":11}
+  ]
+}
+
