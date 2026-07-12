@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="公开无密钥的升压站巡检知识检索、规则校验与评分智能体">
+  <title>升压智巡｜公开无密钥版</title>
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./public.css">
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+<header class="topbar">
+  <a class="brand" href="./">
+    <span class="brand-mark"><svg viewBox="0 0 44 44"><path d="M8 31h28M12 31l5-17h10l5 17M17 22h10M19 14V9h6v5"/></svg></span>
+    <span><strong>升压智巡</strong><small>PUBLIC · ZERO-KEY EDITION</small></span>
+  </a>
+  <div class="top-actions"><span class="system-badge online">公开无密钥 · 浏览器本地计算</span></div>
+</header>
+<main>
+  <section class="hero public-hero">
+    <div>
+      <p class="eyebrow">场景一 · 进岗实践中的那些活儿</p>
+      <h1>知识检索 × 规则校验<br><span>巡检记录量化评分</span></h1>
+      <p class="hero-copy">无需登录、无需演示码、无需模型密钥。XLSX只在当前浏览器中解析；系统用脱敏知识库检索依据，以确定性规则校验数据，并给出可解释的记录质量评分。</p>
+    </div>
+    <div class="hero-facts"><div><strong>30</strong><span>类表单结构识别</span></div><div><strong>4</strong><span>类核心规则覆盖</span></div><div><strong>100</strong><span>分制质量评分</span></div></div>
+  </section>
+
+  <section class="workspace">
+    <aside class="input-panel">
+      <div class="section-heading"><span>01</span><div><h2>选择数据</h2><p>文件不上传，不离开当前浏览器</p></div></div>
+      <div class="mode-tabs"><button class="mode-tab active" data-mode="sample">内置脱敏案例</button><button class="mode-tab" data-mode="upload">上传 XLSX</button></div>
+      <div id="sampleMode" class="mode-panel">
+        <label for="sampleSelect">测试案例</label><select id="sampleSelect"><option>正在加载…</option></select>
+        <p id="sampleDescription" class="field-note"></p>
+      </div>
+      <div id="uploadMode" class="mode-panel hidden">
+        <label class="dropzone" for="fileInput">
+          <svg viewBox="0 0 40 40"><path d="M20 27V8m0 0-7 7m7-7 7 7M8 25v7h24v-7"/></svg>
+          <strong id="fileName">选择或拖入单个 .xlsx</strong><span>最大5MB · 最多500条 · 本地解析</span>
+        </label>
+        <input id="fileInput" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+      </div>
+      <label for="ehsLevel">人员已确认的事件等级（可选）</label>
+      <select id="ehsLevel"><option value="">未选择｜不显示时限</option><option value="二级可记录事件">二级可记录事件</option><option value="一级及以上事件">一级及以上事件</option></select>
+      <button id="analyzeButton" class="primary-button"><span>开始规则校验与评分</span><span>→</span></button>
+      <div class="privacy-note"><strong>公开版数据边界</strong><p>不请求API、不使用Cookie、不调用大模型。姓名、手机号、地址、链接和记录编号在结果中自动脱敏。</p></div>
+      <div class="knowledge-search">
+        <label for="knowledgeQuery">知识检索</label>
+        <div class="search-row"><input id="knowledgeQuery" placeholder="例如：GIS断路器压力标准"><button id="searchKnowledge" class="secondary-button">检索</button></div>
+        <div id="knowledgeResults" class="mini-results"></div>
+      </div>
+    </aside>
+
+    <section class="result-panel" aria-live="polite">
+      <div id="emptyState" class="empty-state"><div class="radar"><span></span><i></i></div><p class="eyebrow">PUBLIC RULE ENGINE</p><h2>选择案例或上传巡检表</h2><p>推荐先测试“GIS低压异常样例”和“SVG趋势复核样例”，比较“异常”与“需复核”的判断边界。</p></div>
+      <div id="loadingState" class="loading-state hidden"><div class="loader"></div><h2>正在本地检索、校验与评分</h2><p>字段识别 → 脱敏 → 知识检索 → 规则校验 → 量化评分</p></div>
+      <div id="resultState" class="hidden">
+        <div class="result-header"><div><p class="eyebrow">LOCAL ANALYSIS RESULT</p><h2 id="resultTitle">复核结果</h2></div><span id="overallStatus" class="status-pill">—</span></div>
+        <div class="score-card">
+          <div class="score-main"><span>记录质量评分</span><strong id="scoreValue">—</strong><b id="scoreGrade">—</b></div>
+          <div id="scoreDimensions" class="score-dimensions"></div>
+          <p id="scoreNote"></p>
+        </div>
+        <div id="metricGrid" class="metric-grid"></div>
+        <div class="result-section"><div class="result-section-title"><h3>规则检查明细</h3><span id="confidenceLabel"></span></div><div id="checksList" class="checks-list"></div></div>
+        <div class="result-columns">
+          <div class="result-section"><h3>复核问题</h3><ol id="questionsList" class="plain-list"></ol></div>
+          <div class="result-section"><h3>异常闭环清单</h3><ol id="closureList" class="plain-list"></ol></div>
+        </div>
+        <div class="result-section draft"><div class="result-section-title"><h3>规范化缺陷描述草稿</h3><button id="copyDraft" class="text-button">复制</button></div><p id="defectDraft"></p></div>
+        <div id="ehsCard" class="result-section ehs-card"></div>
+        <div class="result-section"><h3>自动检索到的知识依据</h3><div id="citationsList" class="citations-list"></div></div>
+        <div class="download-row"><button id="downloadJson" class="secondary-button">下载脱敏 JSON</button><button id="downloadText" class="secondary-button">下载文本报告</button><span id="engineNote"></span></div>
+      </div>
+    </section>
+  </section>
+</main>
+<footer><span>第10中队 · 王帅</span><span>规则库版本 <b id="ruleVersion">—</b></span><span>评分不代表设备健康度或EHS等级</span></footer>
+<div id="toast" class="toast" role="status"></div>
+<script src="./vendor/exceljs.min.js"></script>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
+
