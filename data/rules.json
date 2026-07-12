@@ -1,0 +1,25 @@
+{
+  "version": "2026-07-12.1",
+  "sources": [
+    {"id":"SRC-D12","label":"D12 GIS及出线巡检表（脱敏摘录）","locator":"表头：SF6压力标准"},
+    {"id":"SRC-PRIMARY-202606","label":"一次设备点检卡（2026年6月现行脱敏摘录）","locator":"主变、GIS点检标准"},
+    {"id":"SRC-SECONDARY","label":"电气二次设备点检卡（脱敏摘录）","locator":"主变测控、直流系统标准"},
+    {"id":"SRC-EHS","label":"EHS事故事件管理办法（脱敏摘录）","locator":"信息报告与结案流程"}
+  ],
+  "rules": [
+    {"ruleId":"D12-SF6-BREAKER-MIN","formNo":"D12","equipmentType":"GIS断路器气室","fieldPattern":"断路器.*SF6气体压力","operator":">=","threshold":0.6,"unit":"MPa","resultLevel":"异常","sourceId":"SRC-D12","requiredAction":"复核仪表、温度与单位；确认低于阈值后报告值班负责人。"},
+    {"ruleId":"D12-SF6-OTHER-MIN","formNo":"D12","equipmentType":"GIS其他气室","fieldPattern":"(隔离开关|接地开关|母线气室|套管气室)","operator":">=","threshold":0.4,"unit":"MPa","resultLevel":"异常","sourceId":"SRC-D12","requiredAction":"复核仪表、温度与单位；确认低于阈值后报告值班负责人。"},
+    {"ruleId":"D13-TEMP-ATTENTION","formNo":"D13","equipmentType":"主变压器","fieldPattern":"(油面温度|绕组温度)","operator":"<","threshold":85,"unit":"℃","resultLevel":"需复核","sourceId":"SRC-PRIMARY-202606","requiredAction":"达到日常点检关注线时复核负荷、环境温度和测控显示。"},
+    {"ruleId":"D13-OIL-ALARM","formNo":"D13","equipmentType":"主变压器油温","fieldPattern":"油面温度","operator":"<=","threshold":95,"unit":"℃","resultLevel":"异常","sourceId":"SRC-SECONDARY","requiredAction":"超过报警线时立即按现场规程复核并报告。"},
+    {"ruleId":"D13-OIL-TRIP","formNo":"D13","equipmentType":"主变压器油温","fieldPattern":"油面温度","operator":"<=","threshold":105,"unit":"℃","resultLevel":"异常","sourceId":"SRC-SECONDARY","requiredAction":"超过跳闸线时按现场应急和运行规程处置。"},
+    {"ruleId":"D13-WINDING-ALARM","formNo":"D13","equipmentType":"主变压器绕组温度","fieldPattern":"绕组温度","operator":"<=","threshold":105,"unit":"℃","resultLevel":"异常","sourceId":"SRC-SECONDARY","requiredAction":"超过报警线时立即按现场规程复核并报告。"},
+    {"ruleId":"D13-WINDING-TRIP","formNo":"D13","equipmentType":"主变压器绕组温度","fieldPattern":"绕组温度","operator":"<=","threshold":120,"unit":"℃","resultLevel":"异常","sourceId":"SRC-SECONDARY","requiredAction":"超过跳闸线时按现场应急和运行规程处置。"},
+    {"ruleId":"D10-PRESSURE-TREND","formNo":"D10","equipmentType":"SVG水冷系统","fieldPattern":"压力.*MPa","operator":"relative-change","threshold":0.5,"unit":"比例","resultLevel":"需复核","sourceId":"SRC-PRIMARY-202606","requiredAction":"核实运行状态、量程、单位和启停工况，不直接判定设备故障。"},
+    {"ruleId":"D26-STRUCTURE","formNo":"D26","equipmentType":"蓄电池舱","fieldPattern":"(温度|湿度|适度)","operator":"numeric-required","threshold":null,"unit":"","resultLevel":"需复核","sourceId":"SRC-SECONDARY","requiredAction":"缺少D26专用绝对边界时只检查数值有效性与跨轮次一致性。"}
+  ],
+  "ehs": {
+    "二级可记录事件":{"steps":["4小时内完成快报","24小时内完成初报","调查报告批准后原则上20日内结案"],"sourceId":"SRC-EHS"},
+    "一级及以上事件":{"steps":["立即电话报告并补充书面信息","24小时内完成初报","调查报告批准后原则上45日内结案"],"sourceId":"SRC-EHS"}
+  }
+}
+
