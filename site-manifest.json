@@ -1,0 +1,11 @@
+{
+  "name": "升压智巡——公开无密钥版",
+  "version": "2.0.0",
+  "runtime": "browser-only",
+  "capabilities": [
+    "knowledge-retrieval",
+    "deterministic-rules",
+    "scoring-engine"
+  ],
+  "apiKeysRequired": false
+}
